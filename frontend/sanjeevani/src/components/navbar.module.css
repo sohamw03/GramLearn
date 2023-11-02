@@ -9,12 +9,8 @@
 }
 
 .logo {
-    font-size: xx-large;
     height: 4rem;
     width: auto;
+    object-fit: contain;
     user-select: none;
-    display: grid;
-    place-items: center;
-    text-decoration: none;
-    font-weight: bolder;
 }

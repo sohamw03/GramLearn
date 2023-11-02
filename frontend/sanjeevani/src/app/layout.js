@@ -6,8 +6,8 @@ import { GlobalContextProvider } from "@/context/GlobalContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-    title: "GramLearn",
-    description: "",
+    title: "Sanjeevani",
+    description: "Platform for medicinal plant detection",
 };
 
 export default function RootLayout({ children }) {
@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <GlobalContextProvider>
                 <body className={inter.className}>
-                    <Navbar />
                     {children}
                 </body>
             </GlobalContextProvider>
