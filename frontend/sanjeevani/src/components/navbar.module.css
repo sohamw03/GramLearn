@@ -1,0 +1,16 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .4);
+    background-color: white;
+}
+
+.logo {
+    height: 4rem;
+    width: auto;
+    object-fit: contain;
+    user-select: none;
+}

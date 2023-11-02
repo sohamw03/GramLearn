@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Calibri;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+/* Customising the scroll bar for the whole website */
+
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #fefafe;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+    border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #80868b;
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-moz-scrollbar-track {
+    background-color: #fefafe;
+}
+
+::-moz-scrollbar-thumb {
+    background-color: #a8a8a8;
+    border-radius: 12px;
+}
+
+::-moz-scrollbar-thumb:active {
+    background-color: #80868b;
+}
+
+/* For IE and Edge */
+/* Note: IE and Edge do not support customizing scrollbar styles with CSS. */
+
+/* For Opera */
+::-o-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-o-scrollbar-track {
+    background-color: #fefafe;
+}
+
+::-o-scrollbar-thumb {
+    background-color: #a8a8a8;
+    border-radius: 12px;
+}
+
+::-o-scrollbar-thumb:active {
+    background-color: #80868b;
+}

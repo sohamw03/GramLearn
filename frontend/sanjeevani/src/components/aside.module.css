@@ -1,0 +1,58 @@
+.aside {
+    grid-column: 1;
+    background-image: url("../assets/aside_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: normal;
+    font-weight: 400;
+    font-style: normal;
+    color: black;
+}
+
+.aside_upper,
+.aside_lower {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aside button {
+    border-radius: 0.75rem;
+    background: #E3D9C9;
+    text-align: center;
+    font-size: 1.75rem;
+    cursor: pointer;
+    margin: 0.75rem 0;
+}
+
+.upload_btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 10rem;
+    height: 3.75rem;
+    padding: 0 0.5rem;
+}
+
+.aside_upper p {
+    width: 22.5rem;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.marketinsight_btn {
+    width: 20.8125rem;
+    height: 3.75rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 0.5rem;
+}
