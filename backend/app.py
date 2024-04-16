@@ -14,5 +14,10 @@ def chat():
     return jsonify({"status": True, "response": response})
 
 
+@app.route("/", methods=["GET"])
+def telemetry():
+    return jsonify({"status": True, "message": "server live"})
+
+
 if __name__ == "__main__":
     app.run(port=8000)
