@@ -47,7 +47,7 @@ export default function Chatbot() {
     const data = {
       query: text,
     };
-    const url = `https://dp-nlp-backend/chat`;
+    const url = `http://127.0.0.1:8000/chat`;
     try {
       setMsgLoading(true);
 
