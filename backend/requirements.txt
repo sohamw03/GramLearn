@@ -1,1 +1,9 @@
 Flask==3.0.3
+Flask-Cors==4.0.0
+langchain==0.1.14
+langchain-community==0.0.31
+langchain-core==0.1.37
+langchain-openai==0.1.1
+langchain-text-splitters==0.0.1
+faiss-cpu==1.8.0
+tiktoken==0.6.0
