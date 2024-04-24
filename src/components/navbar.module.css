@@ -6,6 +6,7 @@
     padding: 0 1rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, .4);
     background-color: white;
+    z-index: 999;
 }
 
 .logo {
