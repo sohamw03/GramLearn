@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GramLearn Installation Guide
 
-## Getting Started
+Welcome to the installation guide for **GramLearn** the **Conversational Grammar and English Learning Chatbot**. This guide will walk you through the steps required to set up the chatbot on your local machine for development and testing purposes.
 
-First, run the development server:
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+- Python 3.x installed on your system.
+- `pip` package manager installed.
+- Node.js and npm installed for the frontend setup.
+- A compatible operating system (Windows/Linux/macOS).
+
+## Installation Steps
+
+Follow these steps to install and set up the project:
+
+### 1. Clone the Repository
+
+Clone the project repository to your local machine using Git:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/sohamw03/DP_NLP.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Backend Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Navigate to the backend directory and set up the Flask server:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+cd backend
+```
 
-## Learn More
+Create a virtual environment (optional but recommended):
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+python3 -m venv venv
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Activate the virtual environment:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Windows**:
+  ```bash
+  venv\Scripts\activate
+  ```
+- **Linux/macOS**:
+  ```bash
+  source venv/bin/activate
+  ```
 
-## Deploy on Vercel
+Install the required Python dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pip install -r requirements.txt
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 3. Frontend Setup
+
+Navigate to the frontend directory:
+
+```bash
+cd ..
+```
+
+Install Node.js dependencies:
+
+```bash
+yarn install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the `backend` directory and set the following environment variables:
+
+```plaintext
+FLASK_APP=app.py
+FLASK_ENV=development
+```
+
+### 5. Start the Servers
+
+Start the Flask server:
+
+```bash
+flask run
+```
+
+Start the Next.js frontend:
+
+```bash
+yarn dev
+```
+
+### 6. Install and Start Ollama
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+1. Download the gemma:2b model.
+```bash
+ollama pull gemma:2b
+```
+
+Run Ollama
+
+```bash
+ollama run path/to/gemma_2b.pt
+```
+
+Interact with Model
+
+Use Ollama commands (see docs: [https://github.com/ollama/ollama](https://github.com/ollama/ollama)) for querying and interacting with the model.
+
+
+### 6. Access the Chatbot
+
+Open your web browser and navigate to `http://localhost:3000` to access the chatbot interface.
