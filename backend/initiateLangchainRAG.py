@@ -15,8 +15,8 @@ from langchain_core.prompts import (
 load_dotenv()
 
 # model = Ollama(model="gemma:2b")
-# model = OpenAI()
-model = ChatGoogleGenerativeAI(model="gemini-pro")
+model = OpenAI()
+# model = ChatGoogleGenerativeAI(model="gemini-pro")
 
 vectorstore = FAISS.load_local(
     "dp_pbl_vectorstore", OpenAIEmbeddings(), allow_dangerous_deserialization=True
