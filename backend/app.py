@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
+from dotenv import load_dotenv
 from flask_cors import CORS
 from initiateLangchainRAG import initiateLangchainRAG
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -20,4 +22,4 @@ def telemetry():
 
 
 if __name__ == "__main__":
-    app.run(port=8000)
+    app.run(port=os.environ.get("PORT", 8000))

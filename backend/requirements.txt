@@ -12,3 +12,4 @@ langchain-google-genai==1.0.2
 opencv-contrib-python==4.8.1.78
 opencv-python==4.8.1.78
 python-dotenv==1.0.1
+gunicorn==22.0.0
