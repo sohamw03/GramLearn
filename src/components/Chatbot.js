@@ -47,7 +47,7 @@ export default function Chatbot() {
     const data = {
       query: text,
     };
-    const url = `http://127.0.0.1:8000/chat`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/chat`;
     try {
       setMsgLoading(true);
 
