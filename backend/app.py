@@ -22,4 +22,5 @@ def telemetry():
 
 
 if __name__ == "__main__":
+    import os
     app.run(port=os.environ.get("PORT", 8000))

@@ -86,7 +86,7 @@ export function GlobalContextProvider({ children }) {
   const renderBotMessage = async (responseJson) => {
     updateTime();
 
-    setMessages((prevMessages) => [...prevMessages, { text: responseJson.response, sender: "SJVN", time: currentTime }]);
+    setMessages((prevMessages) => [...prevMessages, { text: responseJson.response.trim(), sender: "SJVN", time: currentTime }]);
 
     setTimeout(() => {
       document.querySelector('input[type="text"]').focus();

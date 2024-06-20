@@ -35,5 +35,6 @@ yarn-error.log*
 next-env.d.ts
 
 backend/.env
+backend/venv
 .env
 venv/

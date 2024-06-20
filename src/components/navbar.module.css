@@ -9,21 +9,22 @@
     z-index: 999;
 }
 
-.logo {
+/* .logo {
     height: 4rem;
     width: auto;
     object-fit: contain;
     user-select: none;
-}
+} */
 
 .title {
     display: flex;
+    width: max-content;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1.5rem auto;
     line-height: 1;
     text-decoration: none;
-    font-size: 3rem;
-    font-weight: bold;
-    color: black;
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #212121;
 }
