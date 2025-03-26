@@ -34,7 +34,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# -----------------------------
+**/.venv/
+**/__pycache__/
 backend/.env
-backend/venv
+backend/.venv/
 .env
-venv/

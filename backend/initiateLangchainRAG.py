@@ -1,26 +1,24 @@
-import os
-from dotenv import load_dotenv
 from operator import itemgetter
-from langchain_core.output_parsers import StrOutputParser
+
+from dotenv import load_dotenv
+
+# from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+# from langchain_community.llms import Ollama
 from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain_community.llms import Ollama
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import (
-    ChatPromptTemplate,
-    SystemMessagePromptTemplate,
-    HumanMessagePromptTemplate,
-)
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+
 
 load_dotenv()
 
 # model = Ollama(model="gemma:2b")
 # model = ChatOpenAI(model_name="gpt-4o", max_tokens=4000)
 model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-exp")
+# embedding = OpenAIEmbeddings()
+embedding = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
 
-vectorstore = FAISS.load_local(
-    "dp_pbl_vectorstore", OpenAIEmbeddings(), allow_dangerous_deserialization=True
-)
+vectorstore = FAISS.load_local("dp_pbl_vectorstore", embedding, allow_dangerous_deserialization=True)
 
 retriever = vectorstore.as_retriever()
 
@@ -35,9 +33,7 @@ You are a helpful and cheerful conversational assistant 'GramLearn' you are dedi
 system_message_prompt = SystemMessagePromptTemplate.from_template(system_prompt)
 human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 
-chat_prompt = ChatPromptTemplate.from_messages(
-    [system_message_prompt, human_message_prompt]
-)
+chat_prompt = ChatPromptTemplate.from_messages([system_message_prompt, human_message_prompt])
 
 # Chain
 chain = (
@@ -58,7 +54,5 @@ def initiateLangchainRAG(query):
 
 
 if __name__ == "__main__":
-    output = initiateLangchainRAG(
-        "Explain 2nd question in fill the blank spaces with nearest or next"
-    )
+    output = initiateLangchainRAG("Explain 2nd question in fill the blank spaces with nearest or next")
     print(output)
