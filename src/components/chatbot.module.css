@@ -47,7 +47,7 @@
     padding-bottom: 0.2rem;
     width: fit-content;
     max-width: 80%;
-    white-space: pre-wrap;
+    white-space: pre-line;
     display: flex;
     flex-direction: column;
     color: white;
@@ -73,6 +73,18 @@
 
 .chatbot_message .message_text {
     align-self: flex-start;
+}
+
+.message_text>ol,
+.message_text>ul {
+    padding-inline-start: 40px;
+}
+
+.message_text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    white-space: normal;
 }
 
 .message_text_cursor {

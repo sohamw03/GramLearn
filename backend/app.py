@@ -12,8 +12,9 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 def chat():
     data = request.get_json()
     query = data.get("query")
-    response = initiateLangchainRAG(query)
-    return jsonify({"status": True, "response": response})
+    history = data.get("history")
+    generate = initiateLangchainRAG(query, history)
+    return generate, {"Content-Type": "text/plain"}
 
 
 @app.route("/", methods=["GET"])

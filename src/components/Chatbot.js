@@ -11,7 +11,7 @@ import Navbar from "./Navbar";
 
 export default function Chatbot() {
   // Global Context
-  const { currentTime, InputAllowed, setInputAllowed, chatDisplayRef, scrollToBottom, MsgLoading, setMsgLoading, Messages, setMessages, updateTime, renderBotMessage } = useGlobal();
+  const { currentTime, InputAllowed, setInputAllowed, chatDisplayRef, scrollToBottom, MsgLoading, setMsgLoading, Messages, setMessages, updateTime, renderBotMessage, streamMsg, setStreamMsg } = useGlobal();
 
   // Set states
   const [IsAnimationRenderedOnce, setIsAnimationRenderedOnce] = useState(false);
@@ -46,6 +46,7 @@ export default function Chatbot() {
     setInputAllowed(false);
     const data = {
       query: text,
+      history: Messages,
     };
     const url = `${process.env.NEXT_PUBLIC_API_URL}/chat`;
     try {
@@ -59,14 +60,24 @@ export default function Chatbot() {
         },
       });
 
-      const responseJson = await response.json();
-      console.log(responseJson);
-      if (responseJson.status) {
-        await renderBotMessage(responseJson);
-      }
-      setInputAllowed(true);
+      // HTTP Streaming
+      const reader = response.body.getReader();
 
+      let output = "";
+      await renderBotMessage("");
       setMsgLoading(false);
+      while (true) {
+        const { done, value } = await reader.read();
+        output += new TextDecoder().decode(value);
+        setStreamMsg(output);
+        if (done) {
+          await renderBotMessage(output, true);
+          break;
+        }
+      }
+
+      console.log(output);
+      setInputAllowed(true);
     } catch (error) {
       console.error(error);
       await renderBotMessage(responseJson);
@@ -75,15 +86,15 @@ export default function Chatbot() {
   };
 
   // Simulate chatbot response | Testing and development of API connection purposes only
-  const simulateChatbotResponse = (message) => {
-    updateTime();
-    setMsgLoading(true);
-    setTimeout(() => {
-      const response = { response: "Hi how are you ?", sender: "SJVN", time: currentTime };
-      renderBotMessage(response);
-      setMsgLoading(false);
-    }, 1000);
-  };
+  // const simulateChatbotResponse = (message) => {
+  //   updateTime();
+  //   setMsgLoading(true);
+  //   setTimeout(() => {
+  //     const response = { response: "Hi how are you ?", sender: "SJVN", time: currentTime };
+  //     renderBotMessage(response);
+  //     setMsgLoading(false);
+  //   }, 1000);
+  // };
 
   return (
     <div className={styles.chatbot_frame}>
@@ -92,7 +103,7 @@ export default function Chatbot() {
         {/* Chat Section */}
         <div className={styles.chat_display} ref={chatDisplayRef}>
           {Messages.map((message, index) => (
-            <Message key={index} index={index} message={message} messagesLength={Messages.length} IsAnimationRenderedOnce={IsAnimationRenderedOnce} scrollToBottom={scrollToBottom} />
+            <Message key={index} index={index} message={message} messagesLength={Messages.length} IsAnimationRenderedOnce={IsAnimationRenderedOnce} scrollToBottom={scrollToBottom} streamMsg={streamMsg} />
           ))}
           {MsgLoading && <Spinner scrollToBottom={scrollToBottom} />}
         </div>

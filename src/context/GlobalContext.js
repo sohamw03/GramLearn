@@ -9,6 +9,7 @@ export function GlobalContextProvider({ children }) {
   const [MsgLoading, setMsgLoading] = useState(false);
   const [Messages, setMessages] = useState([]);
   const [InputAllowed, setInputAllowed] = useState(true);
+  const [streamMsg, setStreamMsg] = useState("");
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleString("en-US", {
       hour: "numeric",
@@ -83,10 +84,18 @@ export function GlobalContextProvider({ children }) {
   };
 
   // Render chatbot response
-  const renderBotMessage = async (responseJson) => {
+  const renderBotMessage = async (responseJson, amend) => {
     updateTime();
 
-    setMessages((prevMessages) => [...prevMessages, { text: responseJson.response.trim(), sender: "SJVN", time: currentTime }]);
+    if (amend === true) {
+      setMessages((prevMessages) => {
+        let prevMsgs = prevMessages;
+        prevMsgs[prevMsgs.length - 1].text = responseJson;
+        return prevMsgs;
+      });
+    } else {
+      setMessages((prevMessages) => [...prevMessages, { text: responseJson.response, sender: "SJVN", time: currentTime }]);
+    }
 
     setTimeout(() => {
       document.querySelector('input[type="text"]').focus();
@@ -107,6 +116,8 @@ export function GlobalContextProvider({ children }) {
     InputAllowed,
     setInputAllowed,
     currentTime,
+    streamMsg,
+    setStreamMsg,
   };
 
   return <globalContext.Provider value={values}>{children}</globalContext.Provider>;
