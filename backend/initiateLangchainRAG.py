@@ -22,7 +22,7 @@ load_dotenv()
 # model = ChatOpenAI(model_name="gpt-4o", max_tokens=4000)
 model = ChatGoogleGenerativeAI(model="gemini-flash-lite-latest")
 # embedding = OpenAIEmbeddings()
-embedding = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
+embedding = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
 
 vectorstore = FAISS.load_local(
     "dp_pbl_vectorstore", embedding, allow_dangerous_deserialization=True
