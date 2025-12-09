@@ -1,8 +1,8 @@
 .main {
     display: grid;
-    /* grid-template-columns: 33.1875rem auto; */
     grid-template-columns: 1fr;
-    grid-template-rows: calc(100vh - 4.25rem);
-    grid-template-rows: calc(100svh - 4.25rem);
-    margin-top: 4.25rem;
+    height: 100vh;
+    height: 100svh;
+    padding-top: 4.5rem; /* Adjust based on navbar height */
+    background-color: var(--bg-color);
 }

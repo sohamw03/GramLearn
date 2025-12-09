@@ -3,28 +3,24 @@
     top: 0;
     left: 0;
     right: 0;
-    padding: 0 1rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .4);
-    background-color: white;
+    padding: 1rem 2rem;
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
     z-index: 999;
-}
-
-/* .logo {
-    height: 4rem;
-    width: auto;
-    object-fit: contain;
-    user-select: none;
-} */
-
-.title {
     display: flex;
-    width: max-content;
     justify-content: center;
     align-items: center;
-    margin: 1.5rem auto;
-    line-height: 1;
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: 700;
     text-decoration: none;
-    font-size: 2.25rem;
-    font-weight: 600;
-    color: #212121;
+    background: linear-gradient(135deg, var(--primary-color), #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.025em;
 }

@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Message from "./Message";
 import Spinner from "./Spinner";
 import styles from "./chatbot.module.css";
 
 import { useGlobal } from "@/context/GlobalContext";
-import send_logo from "../assets/send_logo.png";
 import Navbar from "./Navbar";
 
 export default function Chatbot() {
@@ -17,6 +16,13 @@ export default function Chatbot() {
   const [IsAnimationRenderedOnce, setIsAnimationRenderedOnce] = useState(false);
 
   const [Input, setInput] = useState("");
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   // Handle user input
   const handleUserInput = (event) => {
@@ -37,7 +43,9 @@ export default function Chatbot() {
     }
     setInput("");
     setTimeout(() => {
-      document.querySelector('input[type="text"]').focus();
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
     }, 50);
   };
 
@@ -112,6 +120,7 @@ export default function Chatbot() {
         <div className={styles.input_section}>
           <form className={styles.user_input} onSubmit={handleUserInput} autoComplete="off" noValidate>
             <input
+              ref={inputRef}
               type="text"
               name="userMessage"
               placeholder="Ask a question"
@@ -123,7 +132,9 @@ export default function Chatbot() {
               autoComplete="off"
             />
             <button type="submit" disabled={!InputAllowed}>
-              <Image className={styles.send_icon} src={send_logo} alt="Send" />
+              <svg className={styles.send_icon} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" />
+              </svg>
             </button>
           </form>
         </div>
