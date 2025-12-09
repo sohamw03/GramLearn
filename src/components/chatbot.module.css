@@ -162,6 +162,8 @@
     margin: 0 auto;
     box-sizing: border-box;
     height: 4rem;
+    width: 100%;
+    max-width: 900px;
 }
 
 .user_input input[type="text"] {
